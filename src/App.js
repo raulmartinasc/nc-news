@@ -1,7 +1,16 @@
 import "./App.css";
 
 function App() {
-  return <div className="App"></div>;
+  return (
+    <BrowserRouter>
+      <div className="App">
+        <Header />
+        <Routes>
+          <Route path="/" element={<ArticleSection />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
+  );
 }
 
 export default App;

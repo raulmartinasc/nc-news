@@ -1,8 +1,7 @@
-const ArticleList = ({ articles }) => {
-  console.log(articles);
+const ArticleList = ({ articles, isLoading }) => {
+  if (isLoading) return <p>Loading...</p>;
   return (
     <section className="articleList">
-      <h2 id="h2">Articles</h2>
       <ul>
         {articles.map((article) => {
           return (

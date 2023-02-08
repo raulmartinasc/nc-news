@@ -25,7 +25,7 @@ const IndividualArticle = () => {
         <img src={individualArticle.article_img_url} alt=""></img>
         <h4>User: {individualArticle.author}</h4>
         <p>{individualArticle.body}</p>
-        <Comments comments={comments} />
+        <Comments comments={comments} article_id={article_id} />
       </section>
     );
   }

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 const ArticleList = ({ articles, isLoading }) => {
   if (isLoading) return <p>Loading...</p>;
   return (
@@ -14,6 +15,10 @@ const ArticleList = ({ articles, isLoading }) => {
                 width="200"
                 height="150"
               />
+              <button className="buttonMore">
+                {" "}
+                <Link to={`/articles/${article.article_id}`}>Read More</Link>
+              </button>
             </li>
           );
         })}

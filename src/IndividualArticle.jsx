@@ -1,25 +1,34 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+import Comments from "./Comments";
+import { fetchArticlesById, fetchComments } from "./api";
 const IndividualArticle = () => {
   const [individualArticle, setIndividualArticle] = useState({});
+  const [comments, setComments] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const { article_id } = useParams();
-  console.log(individualArticle);
   useEffect(() => {
-    axios
-      .get(`https://nc-news-api-mq3o.onrender.com/api/articles/${article_id}`)
-      .then(({ data: { article } }) => {
-        setIndividualArticle(article);
-      });
+    fetchArticlesById(article_id).then(({ data: { article } }) => {
+      setIndividualArticle(article);
+    });
+    fetchComments(article_id).then(({ data: { comments } }) => {
+      setComments(comments);
+      setIsLoading(false);
+    });
   }, [article_id]);
-  return (
-    <section>
-      <h3>{individualArticle.title}</h3>
-      <img src={individualArticle.article_img_url}></img>
-      <h4>User: {individualArticle.author}</h4>
-      <p>{individualArticle.body}</p>
-    </section>
-  );
+  if (isLoading) {
+    return <h2>Loading...</h2>;
+  } else {
+    return (
+      <section>
+        <h3>{individualArticle.title}</h3>
+        <img src={individualArticle.article_img_url} alt=""></img>
+        <h4>User: {individualArticle.author}</h4>
+        <p>{individualArticle.body}</p>
+        <Comments comments={comments} />
+      </section>
+    );
+  }
 };
 
 export default IndividualArticle;

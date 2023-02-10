@@ -1,7 +1,9 @@
-const Comments = ({ comments }) => {
+import PostComment from "./PostComment";
+const Comments = ({ comments, article_id }) => {
   return (
     <section>
       <h1>Comments</h1>
+      <PostComment article_id={article_id} />
       <ul>
         {comments.map((comment) => {
           return (

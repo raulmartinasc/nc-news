@@ -21,10 +21,8 @@ export const patchVotes = (increment, article_id) => {
 };
 
 export const postCommentApi = (article_id, data) => {
-  console.log(article_id);
-  console.log(data);
   return axios.post(
     `https://nc-news-api-mq3o.onrender.com/api/articles/${article_id}/comments`,
-    { username: data.user, body: data.comment }
+    data
   );
 };

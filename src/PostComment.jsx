@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { postCommentApi } from "./api";
-const PostComment = ({ article_id }) => {
+const PostComment = ({ article_id, setComments }) => {
   const [comment, setComment] = useState("");
   const [user, setUser] = useState("");
   const [data, setData] = useState({});
@@ -8,8 +8,12 @@ const PostComment = ({ article_id }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setData({ username: user, body: comment });
+    addComment(data);
+  };
+
+  const addComment = (data) => {
     postCommentApi(article_id, data).then((newCommentFromApi) => {
-      console.log(newCommentFromApi);
+      setComments((currentComments) => [newCommentFromApi, ...currentComments]);
     });
   };
   return (

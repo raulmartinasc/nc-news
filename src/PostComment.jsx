@@ -4,18 +4,21 @@ const PostComment = ({ article_id, setComments }) => {
   const [comment, setComment] = useState("");
   const [user, setUser] = useState("");
   const [data, setData] = useState({});
-  console.log(data);
+  const [isLoading, setIsLoading] = useState(true);
   const handleSubmit = (e) => {
     e.preventDefault();
     setData({ username: user, body: comment });
-    addComment(data);
+    setIsLoading(false);
   };
-
-  const addComment = (data) => {
-    postCommentApi(article_id, data).then((newCommentFromApi) => {
+  if (isLoading) {
+    return <p>Posting comment..</p>;
+  } else {
+    postCommentApi(article_id, data).then(({ data: { comment } }) => {
+      const newCommentFromApi = comment;
       setComments((currentComments) => [newCommentFromApi, ...currentComments]);
     });
-  };
+  }
+
   return (
     <section>
       <form onSubmit={handleSubmit}>

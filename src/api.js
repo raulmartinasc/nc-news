@@ -12,3 +12,10 @@ export const fetchComments = (article_id) => {
     `https://nc-news-api-mq3o.onrender.com/api/articles/${article_id}/comments`
   );
 };
+
+export const patchVotes = (increment, article_id) => {
+  return axios.patch(
+    `https://nc-news-api-mq3o.onrender.com/api/articles/${article_id}`,
+    { inc_votes: increment }
+  );
+};

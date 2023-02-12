@@ -1,5 +1,4 @@
 import ArticleList from "./ArticleList";
-import ArticleVotes from "./ArticleVotes";
 import { useState, useEffect } from "react";
 import { fetchAllArticles } from "./api";
 const ArticleSection = () => {
@@ -15,7 +14,6 @@ const ArticleSection = () => {
   return (
     <section>
       <ArticleList articles={articles} isLoading={isLoading} />
-      <ArticleVotes />
     </section>
   );
 };

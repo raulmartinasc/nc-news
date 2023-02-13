@@ -3,21 +3,12 @@ import { postCommentApi } from "./api";
 const PostComment = ({ article_id, setComments }) => {
   const [comment, setComment] = useState("");
   const [user, setUser] = useState("");
-  const [data, setData] = useState({});
-  const [isLoading, setIsLoading] = useState(true);
   const handleSubmit = (e) => {
     e.preventDefault();
-    setData({ username: user, body: comment });
-    setIsLoading(false);
-  };
-  if (isLoading) {
-    return <p>Posting comment..</p>;
-  } else {
-    postCommentApi(article_id, data).then(({ data: { comment } }) => {
-      const newCommentFromApi = comment;
+    postCommentApi(article_id, user, comment).then((newCommentFromApi) => {
       setComments((currentComments) => [newCommentFromApi, ...currentComments]);
     });
-  }
+  };
 
   return (
     <section>

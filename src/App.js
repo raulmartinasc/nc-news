@@ -10,7 +10,7 @@ function App() {
         <Routes>
           <Route path="/" element={<ArticleSection />} />
           <Route path="/articles/:article_id" element={<IndividualArticle />} />
-          <Route path="articles/topics" element={<Topics />} />
+          {/* <Route path="articles/topics" element={<Topics />} /> */}
         </Routes>
       </div>
     </BrowserRouter>

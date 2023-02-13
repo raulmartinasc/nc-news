@@ -29,7 +29,11 @@ const IndividualArticle = () => {
         <h4>User: {individualArticle.author}</h4>
         <ArticleVotes article_id={article_id} />
         <p>{individualArticle.body}</p>
-        <Comments comments={comments} />
+        <Comments
+          comments={comments}
+          article_id={article_id}
+          setComments={setComments}
+        />
       </section>
     );
   }

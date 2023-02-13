@@ -19,3 +19,14 @@ export const patchVotes = (increment, article_id) => {
     { inc_votes: increment }
   );
 };
+
+export const postCommentApi = (article_id, user, comment) => {
+  return axios
+    .post(
+      `https://nc-news-api-mq3o.onrender.com/api/articles/${article_id}/comments`,
+      { username: user, body: comment }
+    )
+    .then(({ data: { comment } }) => {
+      return comment;
+    });
+};

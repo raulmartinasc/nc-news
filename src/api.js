@@ -1,6 +1,14 @@
 import axios from "axios";
-export const fetchAllArticles = () => {
-  return axios.get("https://nc-news-api-mq3o.onrender.com/api/articles");
+export const fetchAllArticles = (arrayOfTopics) => {
+  return axios
+    .get("https://nc-news-api-mq3o.onrender.com/api/articles", {
+      params: {
+        topic: arrayOfTopics,
+      },
+    })
+    .then(({ data: { articles } }) => {
+      return articles;
+    });
 };
 export const fetchArticlesById = (article_id) => {
   return axios.get(
@@ -28,5 +36,13 @@ export const postCommentApi = (article_id, user, comment) => {
     )
     .then(({ data: { comment } }) => {
       return comment;
+    });
+};
+
+export const fetchAllTopics = () => {
+  return axios
+    .get("https://nc-news-api-mq3o.onrender.com/api/topics")
+    .then(({ data: { topics } }) => {
+      return topics;
     });
 };

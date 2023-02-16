@@ -1,9 +1,11 @@
 import axios from "axios";
-export const fetchAllArticles = (arrayOfTopics) => {
+export const fetchAllArticles = (topic, sort_by, order) => {
   return axios
     .get("https://nc-news-api-mq3o.onrender.com/api/articles", {
       params: {
-        topic: arrayOfTopics,
+        topic,
+        sort_by,
+        order,
       },
     })
     .then(({ data: { articles } }) => {

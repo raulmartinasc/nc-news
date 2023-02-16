@@ -11,6 +11,7 @@ function App() {
         <Header />
         <Nav />
         <Routes>
+          <Route path="/" element={<ArticleSection />} />
           <Route path="/articles" element={<ArticleSection />} />
           <Route path="/articles/:article_id" element={<IndividualArticle />} />
           <Route path="/topics" element={<Topics />} />

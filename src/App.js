@@ -4,6 +4,7 @@ import ArticleSection from "./ArticleSection";
 import IndividualArticle from "./IndividualArticle";
 import Topics from "./Topics";
 import Nav from "./Nav";
+import ErrorPage from "./ErrorPage";
 function App() {
   return (
     <BrowserRouter>
@@ -15,6 +16,7 @@ function App() {
           <Route path="/articles" element={<ArticleSection />} />
           <Route path="/articles/:article_id" element={<IndividualArticle />} />
           <Route path="/topics" element={<Topics />} />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </div>
     </BrowserRouter>

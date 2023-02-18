@@ -3,25 +3,37 @@ import { useParams } from "react-router-dom";
 import Comments from "./Comments";
 import { fetchArticlesById, fetchComments } from "./api";
 import ArticleVotes from "./ArticleVotes";
+import ErrorPage from "./ErrorPage";
 const IndividualArticle = () => {
   const [individualArticle, setIndividualArticle] = useState({});
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isDeleted, setIsDeleted] = useState(false);
+  const [error, setError] = useState(null);
 
   const { article_id } = useParams();
   useEffect(() => {
-    fetchArticlesById(article_id).then(({ data: { article } }) => {
-      setIndividualArticle(article);
-    });
-    fetchComments(article_id).then(({ data: { comments } }) => {
-      setComments(comments);
-      setIsLoading(false);
-    });
+    fetchArticlesById(article_id)
+      .then(({ data: { article } }) => {
+        setIndividualArticle(article);
+      })
+      .catch((err) => {
+        setError({ err });
+      });
+    fetchComments(article_id)
+      .then(({ data: { comments } }) => {
+        setComments(comments);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        setError({ err });
+      });
   }, [article_id, isLoading, isDeleted]);
 
   if (isLoading) {
     return <h2>Loading...</h2>;
+  } else if (error) {
+    return <ErrorPage />;
   } else {
     return (
       <section>

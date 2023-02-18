@@ -3,11 +3,21 @@ import { postCommentApi } from "./api";
 const PostComment = ({ article_id, setComments }) => {
   const [comment, setComment] = useState("");
   const [user, setUser] = useState("");
+  const [isEmpty, setIsEmpty] = useState(false);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    postCommentApi(article_id, user, comment).then((newCommentFromApi) => {
-      setComments((currentComments) => [newCommentFromApi, ...currentComments]);
-    });
+    if (!user.length || !comment.length) {
+      setIsEmpty(true);
+    } else {
+      setIsEmpty(false);
+      postCommentApi(article_id, user, comment).then((newCommentFromApi) => {
+        setComments((currentComments) => [
+          newCommentFromApi,
+          ...currentComments,
+        ]);
+      });
+    }
   };
 
   return (
@@ -27,6 +37,7 @@ const PostComment = ({ article_id, setComments }) => {
         ></input>
         <button type="submit">Submit Comment</button>
       </form>
+      {isEmpty && <p>Fields can not be empty</p>}
     </section>
   );
 };

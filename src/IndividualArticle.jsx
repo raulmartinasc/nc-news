@@ -7,6 +7,7 @@ const IndividualArticle = () => {
   const [individualArticle, setIndividualArticle] = useState({});
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isDeleted, setIsDeleted] = useState(false);
 
   const { article_id } = useParams();
   useEffect(() => {
@@ -17,7 +18,7 @@ const IndividualArticle = () => {
       setComments(comments);
       setIsLoading(false);
     });
-  }, [article_id]);
+  }, [article_id, isLoading, isDeleted]);
 
   if (isLoading) {
     return <h2>Loading...</h2>;
@@ -33,6 +34,8 @@ const IndividualArticle = () => {
           comments={comments}
           article_id={article_id}
           setComments={setComments}
+          setIsDeleted={setIsDeleted}
+          isDeleted={isDeleted}
         />
       </section>
     );

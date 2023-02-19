@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Comments from "./Comments";
-import { fetchArticlesById, fetchComments } from "./api";
+import { fetchArticlesById, fetchComments } from "../api";
 import ArticleVotes from "./ArticleVotes";
 import ErrorPage from "./ErrorPage";
 const IndividualArticle = () => {

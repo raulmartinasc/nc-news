@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchArticlesById, patchVotes } from "./api";
+import { fetchArticlesById, patchVotes } from "../api";
 const ArticleVotes = ({ article_id }) => {
   const [votes, setVotes] = useState(0);
   const [err, setErr] = useState(null);

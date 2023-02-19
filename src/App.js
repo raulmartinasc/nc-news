@@ -1,15 +1,13 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Header from "./Header";
-import ArticleSection from "./ArticleSection";
-import IndividualArticle from "./IndividualArticle";
-import Topics from "./Topics";
-import Nav from "./Nav";
-import ErrorPage from "./ErrorPage";
+import ArticleSection from "./Components/ArticleSection";
+import IndividualArticle from "./Components/IndividualArticle";
+import Topics from "./Components/Topics";
+import Nav from "./Components/Navbar/Nav";
+import ErrorPage from "./Components/ErrorPage";
 function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <Header />
         <Nav />
         <Routes>
           <Route path="/" element={<ArticleSection />} />

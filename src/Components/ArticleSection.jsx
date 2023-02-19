@@ -1,6 +1,6 @@
 import ArticleList from "./ArticleList";
 import { useState, useEffect } from "react";
-import { fetchAllArticles } from "./api";
+import { fetchAllArticles } from "../api";
 import { useParams } from "react-router-dom";
 const ArticleSection = () => {
   const [sort_by, setSortBy] = useState("created_at");
@@ -10,7 +10,6 @@ const ArticleSection = () => {
   let { topic } = useParams();
   useEffect(() => {
     fetchAllArticles(topic, sort_by, order).then((articlesFromApi) => {
-      console.log(articlesFromApi);
       setArticles(articlesFromApi);
       setIsLoading(false);
     });

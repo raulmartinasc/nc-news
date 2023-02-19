@@ -1,5 +1,5 @@
 import PostComment from "./PostComment";
-import { deleteComments } from "./api";
+import { deleteComments } from "../api";
 import { useState } from "react";
 const Comments = ({
   comments,

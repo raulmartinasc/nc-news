@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { fetchAllTopics } from "./api";
+import { fetchAllTopics } from "../api";
 const Topics = () => {
   const [topics, setTopics] = useState([]);
   const [isLoading, setIsLoading] = useState(true);

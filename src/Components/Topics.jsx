@@ -18,9 +18,10 @@ const Topics = () => {
       {topics.map((topic) => {
         return (
           <section key={topic.slug}>
-            <h3>
-              <Link to={`/articles?topic=${topic.slug}`}>{topic.slug}</Link>
-            </h3>
+            <Link className="articleLinks" to={`/articles?topic=${topic.slug}`}>
+              <h3 className="topicTitle">{topic.slug}</h3>
+            </Link>
+
             <p>{topic.description}</p>
           </section>
         );

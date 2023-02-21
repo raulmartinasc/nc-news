@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
+import "./ArticleList.css";
 const ArticleList = ({ articles, isLoading, setOrder, setSortBy }) => {
   const handleSortChange = (e) => {
-    console.log(e.target.value);
     setSortBy(e.target.value);
   };
   const handleOrderChange = (e) => {
@@ -10,8 +10,10 @@ const ArticleList = ({ articles, isLoading, setOrder, setSortBy }) => {
   if (isLoading) return <p>Loading...</p>;
   return (
     <section className="articleList">
-      <section>
-        <label htmlFor="sort-by">Sort by: </label>
+      <section className="sort-menu">
+        <label className="sort-title" htmlFor="sort-by">
+          Sort by:{" "}
+        </label>
         <select name="sort" id="sort" onChange={handleSortChange}>
           <option value="choose">Choose an option..</option>
           <option value="description">Description</option>
@@ -26,20 +28,24 @@ const ArticleList = ({ articles, isLoading, setOrder, setSortBy }) => {
       <ul>
         {articles.map((article) => {
           return (
-            <li key={article.article_id}>
-              <h3 className="articleTitle">{article.title}</h3>
-              <img
-                alt={article.description}
-                className="images"
-                src={article.article_img_url}
-                width="200"
-                height="150"
-              />
-              <button className="buttonMore">
-                {" "}
-                <Link to={`/articles/${article.article_id}`}>Read More</Link>
-              </button>
-            </li>
+            <section className="articles">
+              <li key={article.article_id}>
+                <Link
+                  className="articleLinks"
+                  to={`/articles/${article.article_id}`}
+                >
+                  {" "}
+                  <h3 className="articleTitle">{article.title}</h3>
+                </Link>
+                <Link to={`/articles/${article.article_id}`}>
+                  <img
+                    alt={article.description}
+                    className="images"
+                    src={article.article_img_url}
+                  />
+                </Link>
+              </li>
+            </section>
           );
         })}
       </ul>

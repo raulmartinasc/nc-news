@@ -1,0 +1,32 @@
+.sort-menu {
+  margin: 20px;
+}
+.articleList {
+  text-align: center;
+  justify-content: center;
+  align-content: center;
+  gap: 10px;
+}
+.images {
+  height: 140px;
+  cursor: pointer;
+}
+
+.articleTitle {
+  margin: 10px;
+  cursor: pointer;
+  color: black;
+}
+
+.articleTitle:hover {
+  color: blue;
+}
+
+.articleLinks {
+  text-decoration: none;
+}
+.topicTitle {
+  margin: 10px;
+  cursor: pointer;
+  color: black;
+}

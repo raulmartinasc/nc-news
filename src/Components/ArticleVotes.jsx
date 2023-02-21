@@ -18,23 +18,21 @@ const ArticleVotes = ({ article_id }) => {
     });
   };
   return (
-    <section>
-      <h4>Votes: {votes}</h4>
+    <section className="vote-section">
+      <h4 className="title-votes">Votes: {votes}</h4>
       {err ? <p>{err}</p> : null}
-      <button
+      <i
+        class="fa-solid fa-thumbs-up fa-lg"
         onClick={() => {
           handleVotesClick(1);
         }}
-      >
-        Upvote
-      </button>
-      <button
+      ></i>
+      <i
+        class="fa-solid fa-thumbs-down fa-lg"
         onClick={() => {
           handleVotesClick(-1);
         }}
-      >
-        Downvote
-      </button>
+      ></i>
     </section>
   );
 };

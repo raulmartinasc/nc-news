@@ -9,6 +9,7 @@ const Comments = ({
   isDeleted,
 }) => {
   const [error, setError] = useState(null);
+  const [isPosted, setIsPosted] = useState(0);
   const handleDelete = (id) => {
     setIsDeleted(true);
     deleteComments(id)
@@ -23,18 +24,25 @@ const Comments = ({
     return <p>An error has occured deleting your comment.</p>;
   }
   return (
-    <section>
-      <h1>Comments</h1>
-      <PostComment setComments={setComments} article_id={article_id} />
+    <section className="comment-container">
+      <h1 className="comment-title">Comments</h1>
+      <PostComment
+        setIsPosted={setIsPosted}
+        setComments={setComments}
+        article_id={article_id}
+      />
       {isDeleted && <p>Deleting comment...</p>}
       <ul>
         {comments.map((comment) => {
           return (
-            <li key={comment.comment_id}>
-              <h4>{comment.author}: </h4>
-              <p>{comment.body}</p>
-              <button onClick={() => handleDelete(comment.comment_id)}>
-                Delete
+            <li className="individual-comment" key={comment.comment_id}>
+              <h4 className="comment-author">{comment.author}: </h4>
+              <p className="comment-body">{comment.body}</p>{" "}
+              <button
+                className={isPosted ? "button-active" : "button-disabled"}
+                onClick={() => handleDelete(comment.comment_id)}
+              >
+                Delete Comment
               </button>
             </li>
           );

@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ArticleSection from "./Components/ArticleSection";
 import IndividualArticle from "./Components/IndividualArticle";
-import Topics from "./Components/Topics";
 import Nav from "./Components/Navbar/Nav";
 import ErrorPage from "./Components/ErrorPage";
 function App() {
@@ -13,7 +12,6 @@ function App() {
           <Route path="/" element={<ArticleSection />} />
           <Route path="/articles" element={<ArticleSection />} />
           <Route path="/articles/:article_id" element={<IndividualArticle />} />
-          <Route path="/topics" element={<Topics />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </div>

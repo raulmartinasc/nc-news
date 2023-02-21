@@ -4,6 +4,7 @@ import Comments from "./Comments";
 import { fetchArticlesById, fetchComments } from "../api";
 import ArticleVotes from "./ArticleVotes";
 import ErrorPage from "./ErrorPage";
+import "./IndividualArticle.css";
 const IndividualArticle = () => {
   const [individualArticle, setIndividualArticle] = useState({});
   const [comments, setComments] = useState([]);
@@ -36,12 +37,15 @@ const IndividualArticle = () => {
     return <ErrorPage />;
   } else {
     return (
-      <section>
-        <h3>{individualArticle.title}</h3>
-        <img src={individualArticle.article_img_url} alt=""></img>
-        <h4>User: {individualArticle.author}</h4>
+      <section className="individual-article">
+        <h1 className="individual-title">{individualArticle.title}</h1>
+        <img
+          className="individual-img"
+          src={individualArticle.article_img_url}
+          alt=""
+        ></img>
         <ArticleVotes article_id={article_id} />
-        <p>{individualArticle.body}</p>
+        <p className="individual-body">{individualArticle.body}</p>
         <Comments
           comments={comments}
           article_id={article_id}

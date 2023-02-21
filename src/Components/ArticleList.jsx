@@ -25,30 +25,28 @@ const ArticleList = ({ articles, isLoading, setOrder, setSortBy }) => {
           <option value="desc">Desc</option>
         </select>
       </section>
-      <ul>
+      <section className="all-articles">
         {articles.map((article) => {
           return (
-            <section className="articles">
-              <li key={article.article_id}>
-                <Link
-                  className="articleLinks"
-                  to={`/articles/${article.article_id}`}
-                >
-                  {" "}
-                  <h3 className="articleTitle">{article.title}</h3>
-                </Link>
-                <Link to={`/articles/${article.article_id}`}>
-                  <img
-                    alt={article.description}
-                    className="images"
-                    src={article.article_img_url}
-                  />
-                </Link>
-              </li>
-            </section>
+            <article key={article.article_id} className="each-article">
+              <Link
+                className="articleLinks"
+                to={`/articles/${article.article_id}`}
+              >
+                {" "}
+                <h3 className="articleTitle">{article.title}</h3>
+              </Link>
+              <Link to={`/articles/${article.article_id}`}>
+                <img
+                  alt={article.description}
+                  className="images"
+                  src={article.article_img_url}
+                />
+              </Link>
+            </article>
           );
         })}
-      </ul>
+      </section>
     </section>
   );
 };

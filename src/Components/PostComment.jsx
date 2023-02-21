@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { postCommentApi } from "../api";
-const PostComment = ({ article_id, setComments }) => {
+const PostComment = ({ article_id, setComments, setIsPosted }) => {
   const [comment, setComment] = useState("");
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState("jessjelly");
   const [isEmpty, setIsEmpty] = useState(false);
 
   const handleSubmit = (e) => {
@@ -11,24 +11,21 @@ const PostComment = ({ article_id, setComments }) => {
       setIsEmpty(true);
     } else {
       setIsEmpty(false);
+      setUser("jessjelly");
       postCommentApi(article_id, user, comment).then((newCommentFromApi) => {
         setComments((currentComments) => [
           newCommentFromApi,
           ...currentComments,
         ]);
       });
+      setIsPosted(article_id);
+      setComment("");
     }
   };
 
   return (
     <section>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username: </label>
-        <input
-          id="username"
-          value={user}
-          onChange={(e) => setUser(e.target.value)}
-        ></input>
         <label htmlFor="comment">Comment: </label>
         <input
           id="comment"

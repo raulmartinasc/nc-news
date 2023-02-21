@@ -50,5 +50,7 @@ export const fetchAllTopics = () => {
 };
 
 export const deleteComments = (comment_id) => {
-  return axios.delete(`https://nc-news-api-mq3o.onrender.com/api/comments/${comment_id}`)
-}
+  return axios.delete(
+    `https://nc-news-api-mq3o.onrender.com/api/comments/${comment_id}`
+  );
+};
